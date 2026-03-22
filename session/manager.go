@@ -142,3 +142,13 @@ func (m *Manager) CheckAgentStatus(agent db.Agent) string {
 	}
 	return "running"
 }
+
+// CaptureOutput captures the current terminal output of an agent's tmux pane
+func (m *Manager) CaptureOutput(agent db.Agent) (string, error) {
+	if agent.TmuxSession == "" {
+		return "", nil
+	}
+	out, err := exec.Command("tmux", "capture-pane", "-p", "-e", "-J",
+		"-t", agent.TmuxSession).Output()
+	return string(out), err
+}

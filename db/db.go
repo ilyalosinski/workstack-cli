@@ -21,17 +21,17 @@ type Session struct {
 }
 
 type Agent struct {
-	ID          int
-	SessionID   int
-	Repo        string
-	RepoPath    string
-	Branch      string
-	AgentType   string // "claude" or "codex"
-	TmuxSession string
+	ID           int
+	SessionID    int
+	Repo         string
+	RepoPath     string
+	Branch       string
+	AgentType    string // "claude" or "codex"
+	TmuxSession  string
 	WorktreePath string
-	Status      string // "running", "idle", "done", "error"
-	Prompt      string
-	CreatedAt   time.Time
+	Status       string // "running", "idle", "done", "error"
+	Prompt       string
+	CreatedAt    time.Time
 }
 
 func dbPath() string {
